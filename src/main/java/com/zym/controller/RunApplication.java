@@ -1,5 +1,6 @@
 package com.zym.controller;
 
+import org.springframework.boot.Banner;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -35,17 +36,20 @@ public class RunApplication {
         // SpringMVC核心类是：DispatcherServlet
         // Spring核心类是：ClassPathXmlApplicationContext
         // Mybatis核心类是：SqlSession
-        SpringApplication.run(RunApplication.class, args);
+//        SpringApplication.run(RunApplication.class, args);
+        SpringApplication springApplication = new SpringApplication(RunApplication.class);
+        springApplication.setBannerMode(Banner.Mode.CONSOLE);
+        springApplication.run(args);
     }
 
-    @Bean
-    public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
-        return args -> {
-            String[] beanNames = ctx.getBeanDefinitionNames();
-            Arrays.sort(beanNames);
-            for (String beanName : beanNames) {
-                System.out.println(beanName);
-            }
-        };
-    }
+//    @Bean
+//    public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
+//        return args -> {
+//            String[] beanNames = ctx.getBeanDefinitionNames();
+//            Arrays.sort(beanNames);
+//            for (String beanName : beanNames) {
+//                System.out.println(beanName);
+//            }
+//        };
+//    }
 }
