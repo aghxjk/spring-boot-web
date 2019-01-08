@@ -1,5 +1,6 @@
 package com.zym.controller;
 
+import com.zym.service.GetArgumentsBean;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -22,6 +23,12 @@ public class FrontController {
     @RequestMapping("/home")
     public String toHomePage() {
         return "homePage";
+    }
+
+    @RequestMapping("/args")
+    public @ResponseBody
+    String getArgs() {
+       return new GetArgumentsBean().getArgs();
     }
 
     public static void main(String[] args) {

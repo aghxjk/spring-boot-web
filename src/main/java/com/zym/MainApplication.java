@@ -1,13 +1,9 @@
-package com.zym.controller;
+package com.zym;
 
+import com.zym.event.*;
 import org.springframework.boot.Banner;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.Bean;
-
-import java.util.Arrays;
 
 /**
  * 1. @SpringBootApplication
@@ -24,22 +20,35 @@ import java.util.Arrays;
  * 3. @ComponentScan：会自动扫描指定包下的全部标有@Component的类，并注册成bean，当然包括@Component下的子注解@Service,@Repository,@Controller。
  * ---------------------
  */
-@SpringBootApplication(scanBasePackages = {"com.zym.controller","com.zym.service"})
-public class RunApplication {
+//@SpringBootApplication(scanBasePackages = {"com.zym.controller","com.zym.service"})
+@SpringBootApplication
+public class MainApplication {
 
     /**
      * springboot 启动入口
      * @param args
      */
     public static void main(String[] args) {
-        // SpringApplication是springboot框架的核心类
-        // SpringMVC核心类是：DispatcherServlet
-        // Spring核心类是：ClassPathXmlApplicationContext
-        // Mybatis核心类是：SqlSession
+
+        /**
+         * 1. SpringApplication是springboot框架的核心类
+         * 2. SpringMVC核心类是：DispatcherServlet
+         * 3. Spring核心类是：ClassPathXmlApplicationContext
+         * 4. Mybatis核心类是：SqlSession
+         */
 //        SpringApplication.run(RunApplication.class, args);
-        SpringApplication springApplication = new SpringApplication(RunApplication.class);
-        springApplication.setBannerMode(Banner.Mode.CONSOLE);
-        springApplication.run(args);
+        SpringApplication app = new SpringApplication(MainApplication.class);
+        /**
+         * 创建SpringBoot的6个监听器
+         */
+        app.addListeners(new ApplicationStartingEventListener());
+        app.addListeners(new ApplicationEnvironmentPreparedEventListener());
+        app.addListeners(new ApplicationPreparedEventListener());
+        app.addListeners(new ApplicationStartedEventListener());
+        app.addListeners(new ApplicationReadyEventListener());
+        app.addListeners(new ApplicationFailedEventListener());
+        app.setBannerMode(Banner.Mode.CONSOLE);
+        app.run(args);
     }
 
 //    @Bean

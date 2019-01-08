@@ -44,7 +44,4 @@ hs_err_pid*
 .idea/modules.xml
 .idea/uiDesigner.xml
 .idea/workspace.xml
-src/main/java/com/zym/service/
-src/main/resources/static/css/
-src/main/resources/static/js/
 src/test/java/com/test/

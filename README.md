@@ -18,6 +18,27 @@
 * mvn package 
 * java -jar target/demo-0.0.1.jar --debug
 
+## 自定义banner
+1. 在resources目录下,创建banner.txt文件
+2. 在application.properties或application-dev.properties中配置:
+* spring.banner.location=classpath:banner.txt
+
+## SpringBoot：事件
+* SpringApplication启动过程会触发的6个事件，具体解释见com.zym.event包下的事件监听器
+1. ApplicationStartingEvent
+2. ApplicationEnvironmentPreparedEvent
+3. ApplicationPreparedEvent
+4. ApplicationStartedEvent
+5. ApplicationReadyEvent
+
+## SpringBoot：获取启动参数
+* 通过注入一个ApplicationArguments类型的bean，获取传递的应用参数
+1. 详见GetArgumentsBean类;
+2. arguments为static变量;
+
+## CommandLineRunner 和 ApplicationRunner
+* 服务启动过程可以用于加载数据
+
 # Spring 常用注解
 编号|注解|说明
 ---|---|---
