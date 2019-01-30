@@ -47,4 +47,14 @@
 3|@Configuration|[链接](http://syllabus.lianmengtu.top/) 见：三、1.1
 4|@Import|[链接](http://syllabus.lianmengtu.top/) 见：三、1.1
 
+# 自定义属性与加载
+* com.zym.blog.name=一千零一夜
+* com.zym.blog.title=SpringBoot
+* 然后通过@Value("${属性名}")
+* 详见BlogProperties.java
 
+# log4j2 示例
+1. 引入spring-boot-starter-log4j2
+2. 在src/main/resources目录下增加: log4j2.xml
+3. 示例: http://127.0.0.1:8001/log
+4. 代码文件: TextController.java

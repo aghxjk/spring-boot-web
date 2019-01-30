@@ -38,6 +38,14 @@ public class MainApplication {
          */
 //        SpringApplication.run(RunApplication.class, args);
         SpringApplication app = new SpringApplication(MainApplication.class);
+
+
+        /**
+         * 设置控制台打印的banner，本程序为banner.txt文件中的内容
+         */
+        app.setBannerMode(Banner.Mode.CONSOLE);
+
+
         /**
          * 创建SpringBoot的6个监听器
          */
@@ -47,7 +55,6 @@ public class MainApplication {
         app.addListeners(new ApplicationStartedEventListener());
         app.addListeners(new ApplicationReadyEventListener());
         app.addListeners(new ApplicationFailedEventListener());
-        app.setBannerMode(Banner.Mode.CONSOLE);
         app.run(args);
     }
 
