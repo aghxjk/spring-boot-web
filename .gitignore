@@ -46,3 +46,5 @@ hs_err_pid*
 .idea/uiDesigner.xml
 .idea/workspace.xml
 src/test/java/com/test/
+src/main/resources/static/css/
+src/main/resources/static/js/
