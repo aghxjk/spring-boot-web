@@ -1,6 +1,7 @@
 package com.zym;
 
 import com.zym.event.*;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -22,6 +23,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 //@SpringBootApplication(scanBasePackages = {"com.zym.controller","com.zym.service"})
 @SpringBootApplication
+// mapper 接口类扫描包配置
+@MapperScan("com.zym.dao")
 public class MainApplication {
 
     /**

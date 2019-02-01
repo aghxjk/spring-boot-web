@@ -117,7 +117,61 @@ GET|/users/id|根据id查询一个用户
 PUT|/users/id|根据id更新一个用户
 DELETE|/users/id|根据id删除一个用户
 
+## Springboot 实现 Restful 服务，基于 HTTP / JSON 传输
 
+* (1) pom中增加数据库依赖
+```xml
+<dependencies>
+    <dependency>
+        <groupId>org.mybatis.spring.boot</groupId>
+        <artifactId>mybatis-spring-boot-starter</artifactId>
+        <version>1.3.2</version>
+    </dependency>
+    
+    <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>8.0.12</version>
+    </dependency>
+</dependencies>
 
+```
 
+* (2) application-dev.properties文件增加相关配置
+```text
+## 数据源配置
+spring.datasource.url=jdbc:mysql://localhost:3306/springbootdb?useUnicode=true&characterEncoding=utf8
+spring.datasource.username=springboot
+spring.datasource.password=qwer1234
+spring.datasource.driver-class-name=com.mysql.jdbc.Driver
+
+## Mybatis 配置
+mybatis.typeAliasesPackage=org.zym.beans
+mybatis.mapperLocations=classpath:mapper/*.xml
+```
+* (3) 增加mapper文件
+```text
+resources/mapper/CityMapper.xml
+```
+
+* (4) 增加一个city bean
+```
+com.zym.beans.City.java
+```
+
+* (5) 增加一个Dao层接口
+```text
+com.zym.dao.CityDao.java
+```
+
+* (6) 增加一个Service层接口 和 对应的实现类
+```text
+com.zym.service.CityService.java
+com.zym.service.impl.CityServiceImpl.java
+```
+* (6) 在MainApplication中增加mapper扫描注解
+```text
+// mapper 接口类扫描包配置
+@MapperScan("com.zym.dao")
+```
 

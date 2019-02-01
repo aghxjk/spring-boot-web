@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
  * 注解：@ConfigurationProperties 用在类上时，需要与 @Component 配合
  */
 @Component
-@ConfigurationProperties(prefix = "com.mysql")
+@ConfigurationProperties(prefix = "com.info")
 public class MysqlProperties {
 
     private String host;
