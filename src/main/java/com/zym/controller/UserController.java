@@ -2,6 +2,7 @@ package com.zym.controller;
 
 import com.zym.beans.User;
 import org.springframework.web.bind.annotation.*;
+import springfox.documentation.annotations.ApiIgnore;
 
 import javax.websocket.server.PathParam;
 import java.util.*;
@@ -12,6 +13,7 @@ public class UserController {
 
     static Map<Long, User> users = Collections.synchronizedMap(new HashMap<Long, User>());
 
+    @ApiIgnore
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public List<User> getUserList() {
 
@@ -22,6 +24,7 @@ public class UserController {
         return ret;
     }
 
+    @ApiIgnore
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public String postUser(@ModelAttribute User user) {
 
@@ -32,6 +35,7 @@ public class UserController {
         return "success";
     }
 
+    @ApiIgnore
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public User getUser(@PathVariable Long id) {
 
@@ -41,6 +45,7 @@ public class UserController {
         return users.get(id);
     }
 
+    @ApiIgnore
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public String putUser(@PathVariable Long id, @ModelAttribute User user) {
 
@@ -53,6 +58,7 @@ public class UserController {
         return "success";
     }
 
+    @ApiIgnore
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public String deleteUser(@PathVariable Long id) {
 

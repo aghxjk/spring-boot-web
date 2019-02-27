@@ -67,6 +67,7 @@ public class MainApplication {
         app.addListeners(new ApplicationReadyEventListener());
         app.addListeners(new ApplicationFailedEventListener());
         app.run(args);
+
     }
 
 //    @Bean

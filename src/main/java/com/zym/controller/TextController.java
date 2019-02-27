@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import springfox.documentation.annotations.ApiIgnore;
 
 
 /**
@@ -18,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class TextController {
 
-//    private static Logger logger = LogManager.getLogger(TextController.class);
+    private static Logger logger = LogManager.getLogger(TextController.class);
     /*
      * 从浏览器调用或在命令行上使用curl时，该方法返回纯文本。
      * 这是因为:
@@ -35,22 +36,25 @@ public class TextController {
     @Autowired
     MysqlProperties mysqlProperties;
 
+    @ApiIgnore
     @RequestMapping("/")
     public String index() {
         return "pure text response111";
     }
 
+    @ApiIgnore
     @RequestMapping("/log")
     public String log4jTest() {
-        System.out.println(blogProperties.getName());
-//        logger.debug(blogProperties.getName());
-//        logger.info(blogProperties.getTitle());
-//        logger.warn(blogProperties.getDescription());
-//        logger.error(blogProperties.getClass());
-//        logger.fatal("Damn Fatal error. Please fix me.");
-        return "logf4 test";
+//        System.out.println(blogProperties.getName());
+        logger.debug(blogProperties.getName());
+        logger.info(blogProperties.getTitle());
+        logger.warn(blogProperties.getDescription());
+        logger.error(blogProperties.getClass());
+        logger.fatal("Damn Fatal error. Please fix me.");
+        return "logf4 test: " + blogProperties.getDescription();
     }
 
+    @ApiIgnore
     @RequestMapping("/random")
     public String randomConfigTest() {
 //        logger.info(randomProperties.getRandomStr());
@@ -66,6 +70,7 @@ public class TextController {
                 "10 < randomRange < 20 :" + randomProperties.getRandRange2();
     }
 
+    @ApiIgnore
     @RequestMapping("/cfp")
     public String autoConfigPropertiesTest() {
         return mysqlProperties.toString();

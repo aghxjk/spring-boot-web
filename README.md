@@ -5,6 +5,10 @@
 
 [Spring Boot文档](http://springboot.lianmengtu.top/)
 
+[Spring 入门进阶](http://www.spring4all.com/article/246)
+
+[Spring 官方教材翻译](http://www.spring4all.com/article/558)
+
 ## 环境-配置文件-启用
 * 参考application.properties文件中的: spring.profiles.active=dev
 
@@ -36,6 +40,9 @@
 * 通过注入一个ApplicationArguments类型的bean，获取传递的应用参数
 1. 详见GetArgumentsBean类;
 2. arguments为static变量;
+4. FrontController中增加一个获取args的请求接口
+5. 在program arguments中设置启动变量,已逗号分隔.
+6. 通过http://127.0.0.1:8001/args 获取应用的启动参数
 
 ## CommandLineRunner 和 ApplicationRunner
 * 服务启动过程可以用于加载数据
@@ -62,6 +69,8 @@
 
 ## 使用随机数
 1. 随机数配置见: application.properties
+2. 创建RandomProperties.java类
+3. 在TextController中使用
 2. 示例: http://127.0.0.1:8001/random
 
 ## 禁用CommandLine
@@ -117,7 +126,7 @@ GET|/users/id|根据id查询一个用户
 PUT|/users/id|根据id更新一个用户
 DELETE|/users/id|根据id删除一个用户
 
-## Springboot 实现 Restful 服务，基于 HTTP / JSON 传输
+## 实现 Restful 服务(Mybatis示例)，基于 HTTP / JSON 传输
 
 * (1) pom中增加数据库依赖
 ```xml
@@ -174,4 +183,27 @@ com.zym.service.impl.CityServiceImpl.java
 // mapper 接口类扫描包配置
 @MapperScan("com.zym.dao")
 ```
+
+# Swagger2
+简介说明：[点击链接](http://www.spring4all.com/article/251)
+1. 添加POM依赖
+```xml
+<dependencies>
+    <dependency>
+        <groupId>io.springfox</groupId>
+        <artifactId>springfox-swagger2</artifactId>
+        <version>2.8.0</version>
+    </dependency>
+    <dependency>
+        <groupId>io.springfox</groupId>
+        <artifactId>springfox-swagger-ui</artifactId>
+        <version>2.8.0</version>
+    </dependency>
+</dependencies>
+```
+2. 添加Swagger2类
+3. 在Controller中每个对应的接口处,增加@ApiOperation注解.如:CityRestController.java
+4. Swagger2的接口请求页面如下:
+[Swagger2请求地址](http://127.0.0.1:8001/swagger-ui.html)
+
 
