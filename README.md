@@ -19,7 +19,8 @@
 * 
 
 ## 打包 & 运行
-* mvn package 
+如果不设定-Dmaven.test.skip=true编译会保持
+* mvn package -Dmaven.test.skip=true
 * java -jar target/demo-0.0.1.jar --debug
 * java -jar xxx.jar --server.port=8888命令 等价于application.properties中的server.port配置
 
@@ -206,4 +207,8 @@ com.zym.service.impl.CityServiceImpl.java
 4. Swagger2的接口请求页面如下:
 [Swagger2请求地址](http://127.0.0.1:8001/swagger-ui.html)
 
-
+# Spring Boot 实现ErrorController接口处理404、500等错误页面
+简要说明：请参考MyErrorController类即可
+1. 去掉handleError函数的注解@ResponseBody,就可以跳转到自己指定页面
+2. 不去掉@ResponseBody则返回字符串
+3. 如果返回字符串中有中文，则会造成乱码，在 @RequestMapping中增加produces = "text/plain;charset=UTF-8"即可
