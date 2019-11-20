@@ -3,6 +3,7 @@ package com.zym.controller;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mybatis.spring.boot.test.autoconfigure.AutoConfigureMybatis;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.context.annotation.ComponentScan;
@@ -18,6 +19,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest(TextController.class)
 // ComponentScan注解必须得有,否则找不到依赖类.
 @ComponentScan(basePackages = {"com.zym"})
+@AutoConfigureMybatis
 public class TextControllerTest {
 
     @Autowired
