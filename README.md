@@ -207,6 +207,13 @@ com.zym.service.impl.CityServiceImpl.java
 4. Swagger2的接口请求页面如下:
 [Swagger2请求地址](http://127.0.0.1:8001/swagger-ui.html)
 
+## 主要注解
+```text
+@Controller：修饰class，用来创建处理http请求的对象
+@RestController：Spring4之后加入的注解，原来在@Controller中返回json需要@ResponseBody来配合，如果直接用@RestController替代@Controller就不需要再配置@ResponseBody，默认返回json格式。
+@RequestMapping：配置url映射
+```
+
 # Spring Boot 实现ErrorController接口处理404、500等错误页面
 简要说明：请参考MyErrorController类即可
 1. 去掉handleError函数的注解@ResponseBody,就可以跳转到自己指定页面

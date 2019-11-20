@@ -37,7 +37,7 @@ public class TextController {
     MysqlProperties mysqlProperties;
 
     @ApiIgnore
-    @RequestMapping("/")
+    @RequestMapping("/text")
     public String index() {
         return "pure text response111";
     }

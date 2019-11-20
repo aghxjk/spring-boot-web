@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * 注解：@ConfigurationProperties 用在类上时，需要与 @Component 配合
+ * 该注解将properties配置文件中以 "com.info" 前缀的属性值自动绑定到对应的字段中
  */
 @Component
 @ConfigurationProperties(prefix = "com.info")

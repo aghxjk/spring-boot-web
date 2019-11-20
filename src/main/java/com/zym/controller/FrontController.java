@@ -23,7 +23,7 @@ public class FrontController {
      * @return
      */
     @ApiIgnore
-    @RequestMapping("/home")
+    @RequestMapping("/")
     public String toHomePage() {
         return "homePage";
     }
